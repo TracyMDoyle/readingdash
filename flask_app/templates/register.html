@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Login to Reading Dash</title>
+    <title>Register for Reading Dash</title>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Reading Dash</span>
-        <a href = "/register">Register</a>
+        <a href="/">Login</a>
     </nav>
     <div class="containter bg-danger m-2 text-white d-flex justify-content-center">
         {% with messages = get_flashed_messages()%}
@@ -26,20 +26,45 @@
     </div>
     <div class="container text-white">
         <div class="row">
-            <div class="col bg-warning m-4 p-4">
-                <h2>Login</h2>
-                <form class="form-group d-flex flex-column align-items-start" action = "/users/login" method = "post">
+            <div class="col bg-primary m-4 p-4">
+                <h2>Register</h2>
+                <form class="form-group d-flex flex-column align-items-start" action = "/create/user" method = "post">
                     <label>
-                        <p>User Name:</p>
+                        First Name:
+                        <input type="text" name="first_name">
+                    </label>
+                    <label>
+                        Last Name:
+                        <input type="text" name="last_name">
+                    </label>
+                    <label>
+                        Grade:
+                        <input type="number" name="grade" min="1" max="12">
+                    </label>
+                    <label>
+                        School Name:
+                        <input type="text" name="school">
+                    </label>
+                    <label>
+                        Teacher Name:
+                        <input type="text" name="teacher_name">
+                    </label>
+                    <label>
+                        User Name:
                         <input type="text" name="user_name">
                     </label>
                     <label>
-                        <p>Password:</p>
+                        Password:
                         <input type="password" name="password">
                     </label>
-                    <input type="submit" value="Login">
+                    <label>
+                        Confirm Password:
+                        <input type="password" name="confirm_password">
+                    </label>
+                    <input type="submit" value="Register">
                 </form>
             </div>
+            
         </div>
     </div>
 </body>
