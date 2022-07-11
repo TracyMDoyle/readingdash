@@ -26,39 +26,53 @@
     </div>
     <div class="container text-white">
         <div class="row">
-            <div class="col bg-primary m-4 p-4">
+            <div class="col bg-primary m-4 p-4 justify-content-center">
                 <h2>Register</h2>
                 <form class="form-group d-flex flex-column align-items-start" action = "/create/user" method = "post">
                     <label>
-                        First Name:
+                        <p>First Name:</p>
                         <input type="text" name="first_name">
                     </label>
                     <label>
-                        Last Name:
+                        <p>Last Name:</p>
                         <input type="text" name="last_name">
                     </label>
                     <label>
-                        Grade:
-                        <input type="number" name="grade" min="1" max="12">
+                        <p>Grade:</p>
+                        <select name="grade">
+                        <option value="Kindergarten">Kindergarten</option>
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th">4th</option>
+                        <option value="5th">5th</option>
+                        <option value="6th">6th</option>
+                        <option value="7th">7th</option>
+                        <option value="8th">8th</option>
+                        <option value="9th">9th</option>
+                        <option value="10th">10th</option>
+                        <option value="11th">11th</option>
+                        <option value="12th">12th</option>
+                        </select>
                     </label>
                     <label>
-                        School Name:
+                        <p>School Name:</p>
                         <input type="text" name="school">
                     </label>
                     <label>
-                        Teacher Name:
+                        <p>Teacher Name:</p>
                         <input type="text" name="teacher_name">
                     </label>
                     <label>
-                        User Name:
+                        <p>User Name:</p>
                         <input type="text" name="user_name">
                     </label>
                     <label>
-                        Password:
+                        <p>Password:</p>
                         <input type="password" name="password">
                     </label>
                     <label>
-                        Confirm Password:
+                        <p>Confirm Password:</p>
                         <input type="password" name="confirm_password">
                     </label>
                     <input type="submit" value="Register">

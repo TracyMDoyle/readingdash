@@ -1,9 +1,10 @@
+from unittest import result
 from flask_app.config.mysqlconnection import MySQLConnection, connectToMySQL
 from flask_app import app
 from flask import flash, session
 from flask_app.models import user
 
-class User:
+class Book:
     """This user class sets up student reading information by their books."""
 
     db = "reading_dash" 
@@ -24,9 +25,36 @@ class User:
         pass
 
     #read model SQL
+    @classmethod
+    def users_books_by_id(cls, id):
+        data = {"id" : id}
+        query = """
+        SELECT * from users
+        JOIN books
+        ON user.id = books.user_id
+        WHERE users.id = %(id)s
+        ;"""
+        result = connectToMySQL(cls.db).query_db
+        if result:
+            user = cls(result[0])
+            for books in result:
+                data = {
+                    "id" : books["books.id"],
+                    "title" : books["title"],
+                    "author" : books["author"],
+                    "rating" : books["rating"],
+                    "date_completed" : books["date_completed"],
+                    "genre" : books["genre"],
+                    "summary" : books["summary"],
+                    "created_at" : books["books.created_at"],
+                    "updated_at" : books["updated.created_at"]
+                }
+                user.books.append(cls(data))
+        return user
+
 
 
     #update model SQL
 
-    
+
     #delete model SQL

@@ -80,6 +80,10 @@ class User:
         parsed_data ["first_name"] = data["first_name"]
         parsed_data ["last_name"] = data["last_name"]
         parsed_data ["user_name"] = data ["user_name"]
+        parsed_data ["grade"] = data["grade"]
+        parsed_data ["school"] = data["school"]
+        parsed_data ["teacher_name"] = data["teacher_name"]
+
         parsed_data ["password"] = bcrypt.generate_password_hash(data["password"])
         return parsed_data 
 
@@ -104,6 +108,9 @@ class User:
             is_valid = False
         if User.get_user_by_user_name(data["user_name"]):
             flash("User name is already registered")
+            is_valid = False
+        if len(data["user_name"]) < 5:
+            flash("User Name must be at least 5 characters long")
             is_valid = False
         if not PASSWORD_REGEX.match(data["password"]):
             flash("Your password must be 8 characters and contain at least one uppercase letter, a number, and a lowercase letter")
