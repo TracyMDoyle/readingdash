@@ -46,22 +46,9 @@ def updated_recipe():
 #delete recipes
 @app.route('/delete/<int:id>')
 def delete_book_log(id):
-    # if 'user_id' != (session['user_id']):
-    #     return render_template('/naughty.html')
-    # book.Book.delete_book_by_id(id)
-    # return redirect("/users/dashboard")
     this_book=book.Book.get_a_book_by_id(id)
-    print( "****************", this_book["users_id"], session["user_id"])
     if this_book["users_id"] == session["user_id"]:
         book.Book.delete_book_by_id(id)
         return redirect("/users/dashboard")
     else:
         return render_template('/naughty.html')
-
-
-    # this_user = user.User.get_user_by_id(id)
-    # if this_user.user_id == (session["user_id"]):
-    #     book.Book.delete_book_by_id(id)
-    #     return redirect("/users/dashboard")
-    # else:
-    #     return render_template('/naughty.html')
