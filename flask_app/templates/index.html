@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Login to Reading Dash</title>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Reading Dash</span>
-        <a href = "/register">Register</a>
+        <span class="navbar-brand mb-0 h1">
+            <img src="/static/assets/reading_dash_logo.png" alt="dog reading dash logo" width="100px" height="100px">
+        </span>
+        <a href ="/register" class ="button">Register</a>
     </nav>
     <div class="containter bg-danger m-2 text-white d-flex justify-content-center">
         {% with messages = get_flashed_messages()%}
@@ -19,26 +22,30 @@
                         {% for message in messages%}
                             <p>{{ message }}</p>
                         {% endfor %}
-                        <button onclick="popup.remove()">Okay</button>
+                        <button class ="button" onclick="popup.remove()">Okay</button>
                     </div>
                 {% endif %}
                 {% endwith %}
     </div>
-    <div class="container text-white">
-        <div class="row">
-            <div class="col bg-warning m-4 p-4 justify-content-center">
-                <h2>Login</h2>
-                <form class="form-group d-flex flex-column align-items-start" action = "/users/login" method = "post">
-                    <label>
-                        <p>User Name:</p>
-                        <input type="text" name="user_name">
-                    </label>
-                    <label>
-                        <p>Password:</p>
-                        <input type="password" name="password">
-                    </label>
-                    <input type="submit" value="Login">
-                </form>
+    </div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col bg-warning m-1 p-4 justify-content-center">
+                    <div class = "book">
+                    <h2 class="book_title">Reading Dash</h2>
+                    <form class="form-group d-flex flex-column align-items-start" action = "/users/login" method = "post">
+                        <label>
+                            <p>User Name:</p>
+                            <input type="text" name="user_name">
+                        </label>
+                        <label>
+                            <p>Password:</p>
+                            <input type="password" name="password">
+                        </label>
+                        <input class="button" type="submit" value="Login">
+                    </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

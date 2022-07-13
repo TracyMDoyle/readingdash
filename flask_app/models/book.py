@@ -72,9 +72,37 @@ class Book:
             user_books.a_users_books = user.User(book_dictionary)
             the_users_book_list.append(user_books)
         return the_users_book_list
+    
+    @classmethod
+    def get_a_book_by_id(cls,id):
+        data = {"id" : id}
+        query= """
+        SELECT * FROM books
+        WHERE id = %(id)s
+        ;"""
+        result = connectToMySQL(cls.db).query_db(query, data)
+        if result:
+            result = (result[0])
+        return result
+
 
     #update model SQL
-
+    @classmethod
+    def update_book_log_by_id(cls, data):
+        if not cls.validate_book_add(data):
+            return False
+        query= """
+        UPDATE books
+        SET title = %(title)s, author = %(author)s, rating = %(rating)s, 
+        genre = %(genre)s, date_completed = %(date_completed)s, summary = %(summary)s 
+        WHERE id = %(id)s
+        ;"""
+        result = connectToMySQL(cls.db).query_db(query, data)
+        if result:
+            result = (result[0])
+        print("****************** the result is", result) 
+        result = connectToMySQL(cls.db).query_db(query, data)
+        return True
 
     #delete model SQL
     @classmethod

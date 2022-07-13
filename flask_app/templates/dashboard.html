@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Reading Dash</span>
+        <span class="navbar-brand mb-0 h1"><img src="/static/assets/reading_dash_logo.png" alt="dog reading dash logo" width="100px" height="100px"></span>
         <a href ="/logout"><button class="btn btn-primary">Logout</button></a>
     </nav>
     <div class="d-flex justify-content-center">
@@ -31,20 +31,48 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    {% for book in the_users_books %}
-                    <td>{{book.title}}</td> 
-                    <td>{{book.author}}</td>
-                    <td>{{book.rating}}</td>
-                    <td>{{book.date_completed}}</td>
-                    <td><a href="/read/{{book.id}}">view |</a> 
-                        {% if session.user_id == book.a_users_books.id %}
-                        <a href="/edit/{{book.id}}"> Edit |</a>
+                <tr>{% for book in the_users_books %}
+                    {% if session.user_id == book.a_users_books.id %}
+                        <td>{{book.title}}</td> 
+                        <td>{{book.author}}</td>
+                        <td>{{book.rating}}</td>
+                        <td>{{book.date_completed}}</td>
+                    <td><a href="/read/{{book.id}}">View </a> 
+                        <a href="/edit/{{book.id}}">| Edit |</a>
                         <a href="/delete/{{book.id}}"> Delete</a>
-                        {% endif %}
                     </td>
-                </tr>
+                </tr>   {% endif %}
                     {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex  bg-success justify-content-center">
+        <h2 class="m-4 bg-success text-white">Classmates' Books</h2>
+    </div>
+    <div class="d-flex justify-content-center">
+        <table class=" table table-success m-4">
+            <thead>
+            <tr>
+                <th scope="col">Book Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Date Completed</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>{% for book in the_users_books %}
+                        {% if session.user_id != book.a_users_books.id %}
+                        <td>{{book.title}}</td> 
+                        <td>{{book.author}}</td>
+                        <td>{{book.rating}}</td>
+                        <td>{{book.date_completed}}</td>
+                        <td><a href="/read/{{book.id}}">View </a> 
+                        </td>
+                    </tr>{% endif %}
+                    {% endfor %}
+                        
             </tbody>
         </table>
     </div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Read About a Book</title>
+</head>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1"><img src="/static/assets/reading_dash_logo.png" alt="dog reading dash logo" width="100px" height="100px"></span>
+    <a href ="/users/dashboard"><button class="btn btn-primary">Dashboard</button></a>
+    <a href ="/logout"><button class="btn btn-primary">Logout</button></a>
+</nav>
+<body>
+    <div class="container text-white">
+        <div class="row">
+            <div class="col bg-success m-4 p-4">
+            <h1>{{ the_book_log.title }}</h1>
+            <h3>Author:</h3>
+            <p>{{ the_book_log.author }}</p>
+            <h3>Rating:</h3>
+            <p>{{ the_book_log.rating }}</p>
+            <h3>Summary:</h3>
+            <p>{{ the_book_log.summary }}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

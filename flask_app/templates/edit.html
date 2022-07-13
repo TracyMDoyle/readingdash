@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Add a Book</title>
+    <title>Edit Your Book</title>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
@@ -26,35 +26,36 @@
                 {% endwith %}
     </div>
     <div class="containter m-2 d-flex justify-content-left">
-        <h1>Add a Book to Your Reading Dash</h1>
+        <h1>Edit a Book on Your Reading Dash</h1>
     </div>
     <div class="containter m-2 d-flex justify-content-center">
         
-        <form class="form-group d-flex flex-column align-items-start" action = "/book/add" method = "post">
+        <form class="form-group d-flex flex-column align-items-start" action = "/updated" method = "post">
             <input type = "hidden" name="users_id" value = "{{ session.user_id }}" >
+            <input type = "hidden" name="id" value = "{{ the_book.id }}" >
             <label>
                 Title:
-                <input type="text" name="title">
+                <input type="text" name="title" value = "{{ the_book.title }}">
             </label>
             <label>
                 Author:
-                <input type="text" name="author">
+                <input type="text" name="author" value = "{{ the_book.author }}">
             </label>
             <label>
                 Rating:
-                <input type="number" name="rating" min="1" max="5">
+                <input type="number" name="rating" min="1" max="5" value = "{{ the_book.rating }}">
                 </label>
             <label>
                 Genre:
-                <input type="text" name="genre">
+                <input type="text" name="genre" value = "{{ the_book.genre }}">
             </label>
             <label>
                 Date Completed:
-                    <input type="date" name="date_completed">
+                    <input type="date" name="date_completed" value = "{{ the_book.date_completed }}">
                 </label>
             <label>
                 <p>Summary in your own words:</p>
-                <textarea name="summary" cols="30" rows="10"></textarea>
+                <textarea name="summary" cols="30" rows="10">{{ the_book.summary }}</textarea>
             </label>
             <input type="submit" value="Submit">
         </form>

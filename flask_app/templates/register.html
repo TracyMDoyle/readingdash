@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Register for Reading Dash</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Reading Dash</span>
-        <a href="/">Login</a>
+    <nav class="navbar">
+        <span class="navbar-brand mb-0 h1"><img src="/static/assets/reading_dash_logo.png" alt="dog reading dash logo" width="100px" height="100px"></span>
+        <a href="/" class ="button">Login</a>
     </nav>
     <div class="containter bg-danger m-2 text-white d-flex justify-content-center">
         {% with messages = get_flashed_messages()%}
@@ -19,66 +20,67 @@
                         {% for message in messages%}
                             <p>{{ message }}</p>
                         {% endfor %}
-                        <button onclick="popup.remove()">Okay</button>
+                        <button class ="button" onclick="popup.remove()">Okay</button>
                     </div>
                 {% endif %}
                 {% endwith %}
     </div>
     <div class="container text-white">
         <div class="row">
-            <div class="col bg-primary m-4 p-4 justify-content-center">
-                <h2>Register</h2>
-                <form class="form-group d-flex flex-column align-items-start" action = "/create/user" method = "post">
-                    <label>
-                        <p>First Name:</p>
-                        <input type="text" name="first_name">
-                    </label>
-                    <label>
-                        <p>Last Name:</p>
-                        <input type="text" name="last_name">
-                    </label>
-                    <label>
-                        <p>Grade:</p>
-                        <select name="grade">
-                        <option value="Kindergarten">Kindergarten</option>
-                        <option value="1st">1st</option>
-                        <option value="2nd">2nd</option>
-                        <option value="3rd">3rd</option>
-                        <option value="4th">4th</option>
-                        <option value="5th">5th</option>
-                        <option value="6th">6th</option>
-                        <option value="7th">7th</option>
-                        <option value="8th">8th</option>
-                        <option value="9th">9th</option>
-                        <option value="10th">10th</option>
-                        <option value="11th">11th</option>
-                        <option value="12th">12th</option>
-                        </select>
-                    </label>
-                    <label>
-                        <p>School Name:</p>
-                        <input type="text" name="school">
-                    </label>
-                    <label>
-                        <p>Teacher Name:</p>
-                        <input type="text" name="teacher_name">
-                    </label>
-                    <label>
-                        <p>User Name:</p>
-                        <input type="text" name="user_name">
-                    </label>
-                    <label>
-                        <p>Password:</p>
-                        <input type="password" name="password">
-                    </label>
-                    <label>
-                        <p>Confirm Password:</p>
-                        <input type="password" name="confirm_password">
-                    </label>
-                    <input type="submit" value="Register">
-                </form>
+            <div class="col bg-warning m-1 p-4 justify-content-center">
+                <div class = "book2">
+                    <h2 class="book_title">Register</h2>
+                    <form class="form-group d-flex flex-column pl-4 align-items-start" action = "/create/user" method = "post">
+                        <label>
+                            <p>First Name:</p>
+                            <input type="text" name="first_name">
+                        </label>
+                        <label>
+                            <p>Last Name:</p>
+                            <input type="text" name="last_name">
+                        </label>
+                        <label>
+                            <p>Grade:</p>
+                            <select name="grade">
+                            <option value="Kindergarten">Kindergarten</option>
+                            <option value="1st">1st</option>
+                            <option value="2nd">2nd</option>
+                            <option value="3rd">3rd</option>
+                            <option value="4th">4th</option>
+                            <option value="5th">5th</option>
+                            <option value="6th">6th</option>
+                            <option value="7th">7th</option>
+                            <option value="8th">8th</option>
+                            <option value="9th">9th</option>
+                            <option value="10th">10th</option>
+                            <option value="11th">11th</option>
+                            <option value="12th">12th</option>
+                            </select>
+                        </label>
+                        <label>
+                            <p>School Name:</p>
+                            <input type="text" name="school">
+                        </label>
+                        <label>
+                            <p>Teacher Name:</p>
+                            <input type="text" name="teacher_name">
+                        </label>
+                        <label>
+                            <p>User Name:</p>
+                            <input type="text" name="user_name">
+                        </label>
+                        <label>
+                            <p>Password:</p>
+                            <input type="password" name="password">
+                        </label>
+                        <label>
+                            <p>Confirm Password:</p>
+                            <input type="password" name="confirm_password">
+                        </label>
+                        <input class ="button" type="submit" value="Register">
+                    </form>
+                </div>
             </div>
-            
         </div>
     </div>
 </body>
