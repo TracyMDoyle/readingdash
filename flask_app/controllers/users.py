@@ -10,7 +10,7 @@ def page_to_register_user():
 @app.route("/create/user", methods=["POST"])
 def register_user():
     if user.User.create_user(request.form):
-        return redirect('/dashboard')
+        return redirect('/users/dashboard')
     return redirect ("/register")
 
 #Read Route Controller
@@ -18,7 +18,7 @@ def register_user():
 def index():
     return render_template("index.html")
 
-@app.route("/dashboard")
+@app.route("/users/dashboard")
 def user_dashboard():
     this_user = user.User.get_user_by_id(session['user_id'])
     the_users_books = book.Book.users_books_by_id()

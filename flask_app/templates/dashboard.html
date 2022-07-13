@@ -17,7 +17,7 @@
     </div>
     <div class="d-flex  bg-success justify-content-center">
         <h2 class="m-4 bg-success text-white">Your Personal Book Shelf</h2>
-        <a href ="/addbook"><button class="btn btn-primary m-4">Add a book</button></a>
+        <a href ="/add_book"><button class="btn btn-primary m-4">Add a book</button></a>
     </div>
     <div class="d-flex justify-content-center">
         <table class=" table table-success m-4">
@@ -32,22 +32,19 @@
             </thead>
             <tbody>
                 <tr>
-                    {% for book in all_user_books %}
-                    <td>{{book.book_reader.first_name}} {{recipe.book_reader.last_name}}</td>
-                    <td>{{recipe.name}}</td>
-                    {% if recipe.under_thirty == 1 %}
-                    <td>Yes</td>
-                    {% else %}
-                    <td>No</td>
-                    {% endif %}
-                    <td><a href="/recipes/read_recipe/{{recipe.id}}">view instructions |</a>
-                        {% if session.user_id == recipe.recipe_cook.id %}
-                        <a href="/recipes/edit/{{recipe.id}}"> Edit |</a>
-                        <a href="/recipes/delete/{{recipe.id}}"> Delete</a>
+                    {% for book in the_users_books %}
+                    <td>{{book.title}}</td> 
+                    <td>{{book.author}}</td>
+                    <td>{{book.rating}}</td>
+                    <td>{{book.date_completed}}</td>
+                    <td><a href="/read/{{book.id}}">view |</a> 
+                        {% if session.user_id == book.a_users_books.id %}
+                        <a href="/edit/{{book.id}}"> Edit |</a>
+                        <a href="/delete/{{book.id}}"> Delete</a>
                         {% endif %}
                     </td>
                 </tr>
-                
+                    {% endfor %}
             </tbody>
         </table>
     </div>

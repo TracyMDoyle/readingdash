@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Add a Book</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Add Book {{ this_user.first_name }} {{  this_user.last_name }}</span>
+        <a href ="/users/dashboard"><button class="btn btn-primary">Dashboard</button></a>
+        <a href ="/logout"><button class="btn btn-primary">Logout</button></a>
+    </nav>
+    <div class="containter bg-danger m-2 text-white d-flex justify-content-center">
+        {% with messages = get_flashed_messages()%}
+                {% if messages%}
+                    <div id="popup">
+                        {% for message in messages%}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                        <button onclick="popup.remove()">Okay</button>
+                    </div>
+                {% endif %}
+                {% endwith %}
+    </div>
+    <div class="containter m-2 d-flex justify-content-left">
+        <h1>Add a Book to Your Reading Dash</h1>
+    </div>
+    <div class="containter m-2 d-flex justify-content-center">
+        
+        <form class="form-group d-flex flex-column align-items-start" action = "/book/add" method = "post">
+            <input type = "hidden" name="users_id" value = "{{ session.user_id }}" >
+            <label>
+                Title:
+                <input type="text" name="title">
+            </label>
+            <label>
+                Author:
+                <input type="text" name="author">
+            </label>
+            <label>
+                Rating:
+                <input type="number" name="rating" min="1" max="5">
+                </label>
+            <label>
+                Genre:
+                <input type="text" name="genre">
+            </label>
+            <label>
+                Date Completed:
+                    <input type="date" name="date_completed">
+                </label>
+            <label>
+                <p>Summary in your own words:</p>
+                <textarea name="summary" cols="30" rows="10"></textarea>
+            </label>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+</html>
