@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import MySQLConnection, connectToMySQL
 from flask_app import app
 from flask import flash, session
 from flask_app.models import user
+import datetime
 
 class Book:
     """This class sets up student reading information by their books."""
@@ -125,11 +126,14 @@ class Book:
         if len(data ["author"]) < 3:
             flash("Author must be at least 3 characters")
             is_valid = False
-        if data["rating"] == "":
+        if int(data["rating"]) > 5:
             flash("Please enter a rating")
             is_valid = False
-        if data["date_completed"] == "":
-            flash("Please enter a date")
+        if int(data["rating"]) <= 0:
+            flash("Please enter a valid rating")
+            is_valid = False
+        if data["date_completed"] > str(datetime.date.today()):
+            flash("Please enter a valid date")
             is_valid = False
         if len(data["genre"]) < 3:
             flash("Please enter genre")

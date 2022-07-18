@@ -5,13 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Edit Your Book</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-success">
         <span class="navbar-brand mb-0 h1"><img src="/static/assets/reading_dash_logo.png" alt="dog reading dash logo" width="100px" height="100px"></span>
-        <a href ="/users/dashboard"><button class="btn btn-primary">Dashboard</button></a>
-        <a href ="/logout"><button class="btn btn-primary">Logout</button></a>
+        <div class="flex justify-content-right">
+        <a href ="/users/dashboard"><button class="btn btn-warning">Dashboard</button></a>
+        <a href ="/logout"><button class="btn btn-warning">Logout</button></a>
+        </div>
     </nav>
     <div class="containter bg-danger m-2 text-white d-flex justify-content-center">
         {% with messages = get_flashed_messages()%}
@@ -25,12 +31,12 @@
                 {% endif %}
                 {% endwith %}
     </div>
-    <div class="containter m-2 d-flex justify-content-left">
+    <div class="containter m-2 d-flex justify-content-center bg-warning">
         <h1>Edit a Book on Your Reading Dash</h1>
     </div>
-    <div class="containter m-2 d-flex justify-content-center">
+    <div class="containter m-2 d-flex justify-content-center bg-success">
         
-        <form class="form-group d-flex flex-column align-items-start" action = "/updated" method = "post">
+        <form class="form-group d-flex flex-column align-items-start p-4" action = "/updated" method = "post">
             <input type = "hidden" name="users_id" value = "{{ session.user_id }}" >
             <input type = "hidden" name="id" value = "{{ the_book.id }}" >
             <label>
@@ -63,9 +69,9 @@
                 </label>
             <label>
                 <p>Summary in your own words:</p>
-                <textarea name="summary" cols="30" rows="10">{{ the_book.summary }}</textarea>
+                <textarea name="summary" cols="50" rows="10">{{ the_book.summary }}</textarea>
             </label>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="btn btn-warning">
         </form>
     </div>
 

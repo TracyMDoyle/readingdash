@@ -30,11 +30,14 @@ def read_a_book_log(id):
 @app.route("/edit/<int:id>")
 def render_page_to_edit_book(id):
     the_book = book.Book.get_a_book_by_id(id)
-    this_user = user.User.get_user_by_id(session['user_id'])
-    return render_template("edit.html", the_book=the_book, this_user=this_user)
+    if the_book["users_id"] == session["user_id"]:
+        this_user = user.User.get_user_by_id(session['user_id'])
+        return render_template("edit.html", the_book=the_book, this_user=this_user)
+    else:
+        return render_template('/naughty.html')
 
 @app.route("/updated", methods = ["POST"])
-def updated_recipe():
+def updated_book():
     if 'user_id' not in session:
         return redirect('/')
     if book.Book.update_book_log_by_id(request.form) == True:

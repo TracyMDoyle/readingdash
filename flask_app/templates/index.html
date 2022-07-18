@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Login to Reading Dash</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-success">
         <span class="navbar-brand mb-0 h1">
             <img src="/static/assets/reading_dash_logo.png" alt="dog reading dash logo" width="100px" height="100px">
         </span>
-        <a href ="/register" class ="button">Register</a>
+        <a href ="/register" class ="btn btn-warning m-4">Register</a>
     </nav>
     <div class="containter bg-danger m-2 text-white d-flex justify-content-center">
         {% with messages = get_flashed_messages()%}
@@ -42,7 +45,7 @@
                             <p>Password:</p>
                             <input type="password" name="password">
                         </label>
-                        <input class="button" type="submit" value="Login">
+                        <input class="btn btn-warning m-4" type="submit" value="Login">
                     </form>
                     </div>
                 </div>
