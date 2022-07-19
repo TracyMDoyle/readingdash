@@ -37,7 +37,14 @@
                     {% if session.user_id == book.a_users_books.id %}
                         <td>{{book.title}}</td> 
                         <td>{{book.author}}</td>
-                        <td>{{book.rating}}</td>
+                        <td>
+                            {% if book.rating == 1 %} <img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 2 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 3 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 4 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 5 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% endif%}
+                        </td>
                         <td>{{book.date_completed}}</td>
                     <td><a href="/read/{{book.id}}">View </a> 
                         <a href="/edit/{{book.id}}">| Edit |</a>
@@ -68,7 +75,15 @@
                         {% if session.user_id != book.a_users_books.id %}
                         <td>{{book.title}}</td> 
                         <td>{{book.author}}</td>
-                        <td>{{book.rating}}</td>
+                        <td>
+                            {% if book.rating == 1 %} <img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 2 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 3 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 4 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% elif book.rating == 5 %} <img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px"><img src="/static/assets/star.png" width="20px" height="20px">
+                            {% endif%}
+                        </td>
+
                         <td>{{book.date_completed}}</td>
                         <td><a href="/read/{{book.id}}">View </a> 
                         </td>
